@@ -24,7 +24,7 @@ public class SceneManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (TimeScale <= GameOverTimeScale)
-			Debug.Log("Game over!");
+			GameOver();
 		TimeSinceLastSpawn += Time.deltaTime;
 		Time.timeScale = TimeScale;
 		Time.fixedDeltaTime = TimeScale * FixedTimeRatio;
@@ -40,8 +40,10 @@ public class SceneManager : MonoBehaviour {
 	}
 
 	public void DecreaseTime (float amount) {
-		if (TimeScale > amount)
+		if (TimeScale >= amount)
 			TimeScale -= amount;
+		else
+			TimeScale = GameOverTimeScale;
 	}
 
 	public void IncreaseTime(float amount) {
@@ -49,5 +51,9 @@ public class SceneManager : MonoBehaviour {
 			TimeScale += amount;
 		if (TimeScale >= 1)
 			TimeScale = 1;
+	}
+
+	private void GameOver () {
+		Debug.Log("Game over!");
 	}
 }
