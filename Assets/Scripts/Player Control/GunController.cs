@@ -29,8 +29,9 @@ public class GunController : MonoBehaviour {
 	//returns null if nothing was hit
 	private Vector3? hitPoint() {
 		RaycastHit hit;
+		int mask = ~(1 << 8) & ~(1 << 9); //ignore any casts with player or bullets
 		Ray ray = cam.ViewportPointToRay(crosshairLocation);
-		if (Physics.Raycast(ray, out hit))
+		if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
 			return hit.point;
 		else
 			return null;

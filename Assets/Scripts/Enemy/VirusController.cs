@@ -22,10 +22,11 @@ public class VirusController : MonoBehaviour {
 
 	}
 
-	public void Initialize (Spawner spawnPoint, NetworkNode attackPoint) {
+	public void Initialize (Spawner spawnPoint) {
+		target = RandHelp.Choose(SceneManager.manager.Nodes);
+
 		transform.position = spawnPoint.transform.position;
-		transform.LookAt(attackPoint.transform.position);
-		target = attackPoint;
+		transform.LookAt(target.transform.position);
 		SceneManager.manager.DecreaseTime(SpeedDamage);
 	}
 	
