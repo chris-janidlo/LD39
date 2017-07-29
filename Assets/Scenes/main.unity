@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultRotation: {x: 0, y: 0, z: 0}
-  RotationSpeed: 10
+  RotationSpeed: 20
 --- !u!4 &297259449
 Transform:
   m_ObjectHideFlags: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clampInDegrees: {x: 360, y: 180}
-  lockCursor: 0
+  lockCursor: 1
   sensitivity: {x: 0.5, y: 0.5}
   smoothing: {x: 3, y: 3}
   targetDirection: {x: 0, y: 0}
@@ -1470,11 +1470,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 12
-  Gravity: 20
+  Gravity: 30
+  DragNum: 0.95
   JumpBursts:
+  - 12
   - 10
-  - 10
-  AirSpeed: 8
+  AirSpeed: 0.5
   HalfHeight: 1
   GroundedMargin: 0.1
   JumpDelay: 0.1
@@ -1560,7 +1561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d727a7621593cc4782513a166395ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnDelay: 3
+  SpawnDelay: 600
   GameOverTimeScale: 0.1
   TimeSinceLastSpawn: 0
   TimeScale: 1
