@@ -5,6 +5,7 @@ using UnityEngine;
 public class VirusController : MonoBehaviour {
 
 	public float Speed = 5.0f;
+	public int Health = 1;
 	public int NodeDamage = 1;
 	public float SpeedDamage = 0.1f; //how much TimeScale is reduced when this virus spawns
 	public float AttackDistance = 3.0f; //the distance from a node where this virus will stop moving
@@ -22,10 +23,10 @@ public class VirusController : MonoBehaviour {
 
 	}
 
-	public void Initialize (Spawner spawnPoint) {
+	public virtual void Initialize (Vector3 pos) {
 		target = RandHelp.Choose(SceneManager.manager.Nodes);
 
-		transform.position = spawnPoint.transform.position;
+		transform.position = pos;
 		transform.LookAt(target.transform.position);
 		SceneManager.manager.DecreaseTime(SpeedDamage);
 	}
@@ -52,7 +53,11 @@ public class VirusController : MonoBehaviour {
 		transform.RotateAround(target.transform.position, rotationAxis, RotationAngle * Time.deltaTime);
 	}
 
-	void OnDestroy() {
-		SceneManager.manager.IncreaseTime(SpeedDamage);
+	public void Damage (int damage) {
+		Health -= damage;
+		if (Health <= 0) {
+			SceneManager.manager.IncreaseTime(SpeedDamage);
+			Destroy(gameObject);
+		}
 	}
 }

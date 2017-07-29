@@ -18,6 +18,6 @@ public class Spawner : MonoBehaviour {
 	}
 
 	public void Spawn () {
-		Instantiate(RandHelp.Choose(PossibleSpawns)).Initialize(this);
+		Instantiate(RandHelp.Choose(PossibleSpawns)).Initialize(transform.position);
 	}
 }

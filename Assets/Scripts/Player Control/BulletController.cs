@@ -6,6 +6,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour {
 
 	public float Speed = 50.0f;
+	public int Damage = 1;
 
 	private Rigidbody rb;
 
@@ -24,7 +25,7 @@ public class BulletController : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "Enemy")
-			Destroy(collision.gameObject);
+			collision.gameObject.GetComponent<VirusController>().Damage(Damage);
 		Destroy(gameObject);
 	}
 }
