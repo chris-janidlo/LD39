@@ -30,17 +30,12 @@ public class PlayerController : MonoBehaviour {
 		moveDir = transform.TransformDirection(moveDir);
 		moveDir *= isGrounded() ? Speed : AirSpeed;
 
-		if (isGrounded() && jumpTime <= 0) {
-			Debug.Log("hell yeah");
+		if (isGrounded() && jumpTime <= 0)
 			jumpCount = 0;
-		}
-		else
-			Debug.Log("nope");
 
 		if (Input.GetButtonDown("Jump") && jumpCount < JumpBursts.Length) {
 			if (jumpCount == 0)
 				jumpTime = JumpDelay;
-			Debug.Log(jumpCount);
 			vertSpeed = JumpBursts[jumpCount];
 			jumpCount++;
 		}
