@@ -15,6 +15,8 @@ public class SceneManager : MonoBehaviour {
 	//fill the following for the scene:
 	public NetworkNode[] Nodes;
 	public Spawner[] Spawns;
+	public Vector3 LowerBounds;
+	public Vector3 UpperBounds;
 
 	void Start () {
 		manager = this;
@@ -46,6 +48,13 @@ public class SceneManager : MonoBehaviour {
 			TimeScale += amount;
 		if (TimeScale >= 1)
 			TimeScale = 1;
+	}
+
+	public Vector3 RandomLocationInsideBounds() {
+		float x = Random.Range(LowerBounds.x, UpperBounds.x);
+		float y = Random.Range(LowerBounds.y, UpperBounds.y);
+		float z = Random.Range(LowerBounds.z, UpperBounds.z);
+		return new Vector3(x, y, z);
 	}
 
 	private void GameOver () {

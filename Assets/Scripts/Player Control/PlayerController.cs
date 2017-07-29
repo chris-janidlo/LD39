@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+	public static Transform Location;
+
 	public float Speed = 5.0f;
 	public float Gravity = 10.0f;
 	public float DragNum = 0.05f; //number to account for any aspect of drag
@@ -13,14 +15,15 @@ public class PlayerController : MonoBehaviour {
 	public float GroundedMargin = 0.1f; //margin of error for ground check
 	public float JumpDelay = 0.1f; //how long to wait after jumping before being grounded resets jumpCount (needed because game thinks you are still grounded a frame or two after jumping)
 
-	private Rigidbody rb;
+	private Rigidbody rb; //rigidbody of parent, which just translates; no rotation
 	private int jumpCount;
 	private float jumpTime;
 	private Vector2 prevHorizontalSpeed;
 	private Vector3 moveDir;
 
 	void Start () {
-		rb = GetComponent<Rigidbody>();
+		Location = transform.parent;
+		rb = transform.parent.GetComponent<Rigidbody>();
 		jumpCount = 0;
 	}
 	

@@ -45,12 +45,16 @@ public class VirusController : MonoBehaviour {
 	}
 
 	private void rotateAroundNode () {
+		rotateAroundPos(target.transform.position);
+	}
+
+	protected void rotateAroundPos (Vector3 pos) {
 		if (rotationTime <= 0) {
 			rotationAxis = RandHelp.Choose(RotationAxes);
 			rotationTime = RandHelp.Choose(RotationTimes);
 		}
 		rotationTime -= Time.deltaTime;
-		transform.RotateAround(target.transform.position, rotationAxis, RotationAngle * Time.deltaTime);
+		transform.RotateAround(pos, rotationAxis, RotationAngle * Time.deltaTime);
 	}
 
 	public void Damage (int damage) {

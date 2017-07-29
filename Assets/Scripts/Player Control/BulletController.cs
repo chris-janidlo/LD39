@@ -24,8 +24,9 @@ public class BulletController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
+		Debug.Log(collision.gameObject.tag);
 		if (collision.gameObject.tag == "Enemy")
-			collision.gameObject.GetComponent<VirusController>().Damage(Damage);
+			collision.gameObject.GetComponentInChildren<VirusController>().Damage(Damage);
 		Destroy(gameObject);
 	}
 }
