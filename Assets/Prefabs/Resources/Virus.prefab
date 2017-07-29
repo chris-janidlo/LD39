@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4669411881919332}
   - component: {fileID: 33547369450447614}
-  - component: {fileID: 65296545858451786}
   - component: {fileID: 23086114115459450}
   - component: {fileID: 114510401622194580}
   m_Layer: 0
@@ -82,18 +81,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1490611041318800}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65296545858451786
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490611041318800}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114510401622194580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,3 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0065a608f65ab440a2572cf6fe3d1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 5
+  Damage: 1
+  AttackDistance: 3
+  AttackDelay: 2
