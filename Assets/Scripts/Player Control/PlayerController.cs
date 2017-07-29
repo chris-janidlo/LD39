@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody rb;
 	private int jumpCount;
 	private float jumpTime;
-	private float vertSpeed;
 	private Vector2 prevHorizontalSpeed;
 	private Vector3 moveDir;
 
@@ -46,13 +45,13 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonDown("Jump") && jumpCount < JumpBursts.Length) {
 			if (jumpCount == 0)
 				jumpTime = JumpDelay;
-			vertSpeed = JumpBursts[jumpCount];
+			moveDir.y = JumpBursts[jumpCount];
 			jumpCount++;
 		}
 		else
-			vertSpeed = rb.velocity.y;
+			moveDir.y = rb.velocity.y;
 
-		rb.velocity = new Vector3(moveDir.x, vertSpeed, moveDir.z);
+		rb.velocity = moveDir;
 	}
 
 	void FixedUpdate() {

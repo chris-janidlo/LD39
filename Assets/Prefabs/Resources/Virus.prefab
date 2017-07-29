@@ -106,6 +106,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
-  Damage: 1
+  NodeDamage: 1
+  SpeedDamage: 0.1
   AttackDistance: 3
   AttackDelay: 2
+  RotationAngle: 45
+  RotationAxes:
+  - {x: 1, y: 0, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 0, z: 1}
+  RotationTimes:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5

@@ -29,9 +29,8 @@ public class SceneManager : MonoBehaviour {
 		Time.fixedDeltaTime = TimeScale * FixedTimeRatio;
 		if (TimeSinceLastSpawn >= SpawnDelay) {
 			TimeSinceLastSpawn = 0.0f;
-			//todo: function for this
-			NetworkNode nn = Nodes[UnityEngine.Random.Range(0, Nodes.Length)];
-			Spawner sp = Spawns[UnityEngine.Random.Range(0, Spawns.Length)];
+			NetworkNode nn = RandHelp.Choose(Nodes);
+			Spawner sp = RandHelp.Choose(Spawns);
 
 			VirusController vc = ((GameObject) Instantiate(Resources.Load("Virus"))).GetComponent<VirusController>();
 			vc.Initialize(sp, nn);
