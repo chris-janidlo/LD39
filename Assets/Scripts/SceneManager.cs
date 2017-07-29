@@ -16,7 +16,6 @@ public class SceneManager : MonoBehaviour {
 	public NetworkNode[] Nodes;
 	public Spawner[] Spawns;
 
-	// Use this for initialization
 	void Start () {
 		manager = this;
 	}

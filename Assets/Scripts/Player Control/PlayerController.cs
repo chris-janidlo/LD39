@@ -29,11 +29,8 @@ public class PlayerController : MonoBehaviour {
 		if (jumpTime > 0)
 			jumpTime -= Time.deltaTime;
 
-		//Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-		//moveDir = transform.TransformDirection(moveDir);
-		//moveDir *= isGrounded() ? Speed : AirSpeed;
-
 		if (isGrounded()) {
+			jumpCount = 0;
 			moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 			moveDir = transform.TransformDirection(moveDir).normalized;
 			moveDir *= Speed;
@@ -46,9 +43,6 @@ public class PlayerController : MonoBehaviour {
 			moveDir += strafeDirection;
 		}
 
-		if (isGrounded())
-			jumpCount = 0;
-
 		if (Input.GetButtonDown("Jump") && jumpCount < JumpBursts.Length) {
 			if (jumpCount == 0)
 				jumpTime = JumpDelay;
@@ -59,7 +53,6 @@ public class PlayerController : MonoBehaviour {
 			vertSpeed = rb.velocity.y;
 
 		rb.velocity = new Vector3(moveDir.x, vertSpeed, moveDir.z);
-		//prevHorizontalSpeed = new Vector2(moveDir.x, moveDir.z);
 	}
 
 	void FixedUpdate() {

@@ -12,8 +12,7 @@ public class VirusController : MonoBehaviour {
 
 	private NetworkNode target;
 	private float timeSinceLastAttack = 0.0f;
-
-	// Use this for initialization
+	
 	void Start () {
 		
 	}
@@ -25,7 +24,6 @@ public class VirusController : MonoBehaviour {
 		SceneManager.manager.DecreaseTime(SpeedDamage);
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if ((target.transform.position - transform.position).magnitude >= AttackDistance) {
 			transform.Translate(Vector3.forward * Speed * Time.deltaTime);

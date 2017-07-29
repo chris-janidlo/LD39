@@ -14,14 +14,12 @@ public class NetworkNode : MonoBehaviour {
 	private int health;
 	private bool knownDead = false;
 	private float timeSinceLastRepairAction; //time since either the node was attacked or the node repaired itself
-
-	// Use this for initialization
+	
 	void Start () {
 		timeSinceLastRepairAction = 0.0f;
 		health = MaxHealth;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		timeSinceLastRepairAction += Time.deltaTime;
 		if (health < MaxHealth && timeSinceLastRepairAction >= RepairTime) {
