@@ -24,11 +24,11 @@ public class VirusController : MonoBehaviour {
 	}
 
 	public virtual void Initialize (Vector3 pos) {
-		target = RandHelp.Choose(SceneManager.manager.Nodes);
+		target = RandHelp.Choose(MySceneManager.manager.Nodes);
 
 		transform.position = pos;
 		transform.LookAt(target.transform.position);
-		SceneManager.manager.DecreaseTime(SpeedDamage);
+		MySceneManager.manager.DecreaseTime(SpeedDamage);
 	}
 	
 	void Update () {
@@ -60,7 +60,7 @@ public class VirusController : MonoBehaviour {
 	public void Damage (int damage) {
 		Health -= damage;
 		if (Health <= 0) {
-			SceneManager.manager.IncreaseTime(SpeedDamage);
+			MySceneManager.manager.IncreaseTime(SpeedDamage);
 			Destroy(gameObject);
 		}
 	}

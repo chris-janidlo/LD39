@@ -12,6 +12,7 @@ public class WormController : VirusController {
 	private bool attached = false;
 
 	void Update() {
+		transform.LookAt(PlayerController.Location);
 		waitTime += Time.deltaTime;
 		warpTime += Time.deltaTime;
 		if (!attached && waitTime >= AttackDelay) {
@@ -20,14 +21,14 @@ public class WormController : VirusController {
 			attached = true;
 		}
 		if (!attached && warpTime >= currWarp) {
-			transform.position = SceneManager.manager.RandomLocationInsideBounds();
+			transform.position = MySceneManager.manager.RandomLocationInsideBounds();
 			currWarp = Random.Range(WarpTimeRange.x, WarpTimeRange.y);
 			warpTime = 0.0f;
 		}
 	}
 
 	public override void Initialize(Vector3 pos) {
-		SceneManager.manager.DecreaseTime(SpeedDamage);
+		MySceneManager.manager.DecreaseTime(SpeedDamage);
 		transform.position = pos;
 		currWarp = Random.Range(WarpTimeRange.x, WarpTimeRange.y);
 	}

@@ -14,6 +14,6 @@ public class TextValue : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		value.text = (SceneManager.manager.TimeScale * 100).ToString("F0") + " %";
+		value.text = (MySceneManager.manager.TimeScale * 100).ToString("F0") + " %";
 	}
 }

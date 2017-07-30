@@ -1,55 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NetworkNode : MonoBehaviour {
 
 	public int MaxHealth = 10;
+	public int Health;
 	public float RepairTime = 3.5f; //how much time has passed since last attack on this node for it to repair itself
 	public int RepairAmount = 2; //how much this node repairs itself for every RepairTime seconds
 	public float TimeHealth = 0.2f; //how much SceneManager's TimeScale is reduced when this dies
 	public string Name;
 	public bool Dead = false;
+	public Material HealthyMat;
+	public Material DeadMat;
 
-	private int health;
 	private bool knownDead = false;
 	private float timeSinceLastRepairAction; //time since either the node was attacked or the node repaired itself
-	
+	private Slider healthBar;
+	private Renderer rend;
+
 	void Start () {
 		timeSinceLastRepairAction = 0.0f;
-		health = MaxHealth;
+		Health = MaxHealth;
+		healthBar = GetComponentInChildren<Slider>();
+		rend = GetComponent<Renderer>();
 	}
 	
 	void Update () {
 		timeSinceLastRepairAction += Time.deltaTime;
-		if (health < MaxHealth && timeSinceLastRepairAction >= RepairTime) {
-			Debug.Log(name + " healed for " + RepairAmount);
+		if (Health < MaxHealth && timeSinceLastRepairAction >= RepairTime) {
 			timeSinceLastRepairAction = 0.0f;
-			if (health < MaxHealth - RepairAmount)
-				health += RepairAmount;
+			if (Health < MaxHealth - RepairAmount)
+				Health += RepairAmount;
 			else {
-				health = MaxHealth;
+				Health = MaxHealth;
 				if (Dead) {
-					Debug.Log(name + " is back up");
+					rend.material = HealthyMat;
 					Dead = false;
-					SceneManager.manager.IncreaseTime(TimeHealth);
+					MySceneManager.manager.IncreaseTime(TimeHealth);
 				}
 			}
 		}
-		if (health <= 0)
+		if (Health <= 0)
 			Dead = true;
 		if (Dead && !knownDead) {
-			Debug.Log(name + " destroyed!");
-			SceneManager.manager.DecreaseTime(TimeHealth);
+			rend.material = DeadMat;
+			MySceneManager.manager.DecreaseTime(TimeHealth);
 			knownDead = true;
 		}
+		healthBar.value = (float) Health / MaxHealth;
 	}
 
 	public void AttackFor (int damage) {
 		timeSinceLastRepairAction = 0.0f; //this goes outside the _if_ so that machines can only repair when all viruses are gone
 		if (!Dead) {
 			Debug.Log(name + " hurt for " + damage);
-			health -= damage;
+			Health -= damage;
 		}
 	}
 }

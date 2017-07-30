@@ -32,7 +32,7 @@ public class TrojanController : VirusController {
 		transform.position = pos;
 		rb = GetComponent<Rigidbody>();
 		rb.velocity = findDirection() * Speed;
-		SceneManager.manager.DecreaseTime(SpeedDamage);
+		MySceneManager.manager.DecreaseTime(SpeedDamage);
 	}
 
 	//find a direction to go that has no immediate collisions
@@ -46,7 +46,7 @@ public class TrojanController : VirusController {
 	}
 
 	void Explode () {
-		SceneManager.manager.IncreaseTime(SpeedDamage);
+		MySceneManager.manager.IncreaseTime(SpeedDamage);
 		foreach (VirusController virus in Payload)
 			Instantiate(virus).Initialize(transform.position + Random.insideUnitSphere * MaxExplodeDistance);
 		Destroy(gameObject);

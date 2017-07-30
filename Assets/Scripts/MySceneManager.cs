@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager : MonoBehaviour {
+public class MySceneManager : MonoBehaviour {
 
-	public static SceneManager manager;
+	public static MySceneManager manager;
+
+	public EndGameManager EndGameObject;
 
 	public float SpawnDelay; //how long, in seconds, between each spawn
-	public float GameOverTimeScale = 0.1f; //what time scale constitutes a game over
+	public float GameOverMargin; //margin of error for when a game over will happen
 	public readonly float FixedTimeRatio = 0.02f; //whenever we change the time scale, we also change the physics time step to TimeScale * FixedTimeRatio. the default Unity physics step is 0.02 seconds
 	public float TimeSinceLastSpawn = 0.0f;
 	public float TimeScale = 1.0f;
@@ -24,8 +26,6 @@ public class SceneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (TimeScale <= GameOverTimeScale)
-			GameOver();
 		TimeSinceLastSpawn += Time.deltaTime;
 		Time.timeScale = TimeScale;
 		Time.fixedDeltaTime = TimeScale * FixedTimeRatio;
@@ -37,16 +37,16 @@ public class SceneManager : MonoBehaviour {
 	}
 
 	public void DecreaseTime (float amount) {
-		if (TimeScale >= amount)
+		if (TimeScale >= amount + GameOverMargin)
 			TimeScale -= amount;
 		else
-			TimeScale = GameOverTimeScale;
+			GameOver();
 	}
 
 	public void IncreaseTime(float amount) {
 		if (TimeScale < 1)
 			TimeScale += amount;
-		if (TimeScale >= 1)
+		if (TimeScale > 1)
 			TimeScale = 1;
 	}
 
@@ -58,6 +58,7 @@ public class SceneManager : MonoBehaviour {
 	}
 
 	private void GameOver () {
-		Debug.Log("Game over!");
+		Instantiate(EndGameObject).Initialize(Time.timeSinceLevelLoad);
+		UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
 	}
 }

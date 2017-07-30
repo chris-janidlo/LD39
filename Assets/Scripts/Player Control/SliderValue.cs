@@ -14,6 +14,6 @@ public class SliderValue : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		slider.value = SceneManager.manager.TimeScale;
+		slider.value = MySceneManager.manager.TimeScale;
 	}
 }
