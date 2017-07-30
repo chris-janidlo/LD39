@@ -97,12 +97,12 @@ MonoBehaviour:
   Health: 1
   NodeDamage: 1
   SpeedDamage: 0.1
-  AttackDistance: 3
-  AttackDelay: 2
+  AttackDistance: 4
+  AttackDelay: 6
   RotationAngle: 5
   RotationAxes: []
   RotationTimes: []
-  WarpTimeRange: {x: 0, y: 0}
+  WarpTimeRange: {x: 2, y: 6}
 --- !u!135 &135139787200587604
 SphereCollider:
   m_ObjectHideFlags: 1
