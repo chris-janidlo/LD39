@@ -24,7 +24,7 @@ Advanced Infiltration Management System
 
 
 
-<size=9>Fatal error 0x00ff89 at 0x7a8bfe
+<size=9>Fatal error 0x2a at virtual address 0x00089
 
 
 Press any key to restart
