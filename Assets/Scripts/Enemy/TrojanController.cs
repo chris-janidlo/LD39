@@ -47,7 +47,7 @@ public class TrojanController : VirusController {
 	}
 
 	void Explode () {
-		PlayerController.aus.PlayOneShot(RandHelp.Choose(ExplodeSounds));
+		PlayerController.aus.PlayOneShot(RandHelp.Choose(ExplodeSounds), 2.0f);
 		MySceneManager.manager.IncreaseTime(SpeedDamage);
 		foreach (VirusController virus in Payload)
 			Instantiate(virus).Initialize(transform.position + Random.insideUnitSphere * MaxExplodeDistance);

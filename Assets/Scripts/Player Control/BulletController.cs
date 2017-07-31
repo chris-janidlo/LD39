@@ -28,7 +28,7 @@ public class BulletController : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "Enemy")
 			collision.gameObject.GetComponentInChildren<VirusController>().Damage(Damage);
-		PlayerController.aus.PlayOneShot(DeathSound);
+		PlayerController.aus.PlayOneShot(DeathSound, .9f);
 		Destroy(gameObject);
 	}
 }

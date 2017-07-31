@@ -1347,10 +1347,6 @@ Prefab:
       propertyPath: m_Name
       value: Cube04 (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 0fda31705f9e60b4fa25340aba1d6558, type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 904d7559a80f7fb4c99d417cbfb0c596, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fda31705f9e60b4fa25340aba1d6558, type: 2}
   m_IsPrefabParent: 0
@@ -2622,6 +2618,16 @@ Prefab:
         type: 2}
       propertyPath: PossibleSpawnNames.Array.data[4]
       value: Trojan
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[5]
+      value: Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[6]
+      value: Virus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfd98027c9f2e644bad3840dc6511719, type: 2}
@@ -5012,6 +5018,16 @@ Prefab:
       propertyPath: ShotDelay
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 114424462189854734, guid: 37630d52492c445408cff880bef77b90,
+        type: 2}
+      propertyPath: sensitivity.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424462189854734, guid: 37630d52492c445408cff880bef77b90,
+        type: 2}
+      propertyPath: sensitivity.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37630d52492c445408cff880bef77b90, type: 2}
   m_IsPrefabParent: 0
@@ -5273,7 +5289,7 @@ Prefab:
     - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
         type: 2}
       propertyPath: PossibleSpawnNames.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4277723686089074, guid: dfd98027c9f2e644bad3840dc6511719, type: 2}
       propertyPath: m_LocalPosition.x
@@ -5320,6 +5336,21 @@ Prefab:
         type: 2}
       propertyPath: PossibleSpawnNames.Array.data[1]
       value: Trojan
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[2]
+      value: Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[3]
+      value: Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[4]
+      value: Worm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfd98027c9f2e644bad3840dc6511719, type: 2}
@@ -8460,8 +8491,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EndGameObject: {fileID: 114695479865021548, guid: 2cc4dc2b42e5324468ac972373159e34,
     type: 2}
-  SpawnDelay: 3
-  GameOverMargin: 0.01
+  SpawnDelay: 0
+  PossibleSpawnRange: {x: 2, y: 6}
+  SafeZone: 0.1
+  GameOverMargin: 0
   TimeSinceLastSpawn: 0
   TimeScale: 1
   Nodes:
@@ -8547,10 +8580,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c9ae2fd61b9233942a5b4a2a6fb7381f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -11068,6 +11101,16 @@ Prefab:
       propertyPath: PossibleSpawnNames.Array.data[2]
       value: Worm
       objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[3]
+      value: Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[4]
+      value: Trojan
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfd98027c9f2e644bad3840dc6511719, type: 2}
   m_IsPrefabParent: 0
@@ -11817,7 +11860,7 @@ Prefab:
     - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
         type: 2}
       propertyPath: PossibleSpawnNames.Array.size
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4277723686089074, guid: dfd98027c9f2e644bad3840dc6511719, type: 2}
       propertyPath: m_LocalPosition.x
@@ -11859,6 +11902,26 @@ Prefab:
         type: 2}
       propertyPath: PossibleSpawnNames.Array.data[0]
       value: Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[1]
+      value: Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[2]
+      value: Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[3]
+      value: Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203620450385048, guid: dfd98027c9f2e644bad3840dc6511719,
+        type: 2}
+      propertyPath: PossibleSpawnNames.Array.data[4]
+      value: Trojan
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfd98027c9f2e644bad3840dc6511719, type: 2}

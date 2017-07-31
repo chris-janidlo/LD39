@@ -9,6 +9,8 @@ public class MySceneManager : MonoBehaviour {
 	public EndGameManager EndGameObject;
 
 	public float SpawnDelay; //how long, in seconds, between each spawn
+	public Vector2 PossibleSpawnRange;
+	public float SafeZone; //when the game stops spawning
 	public float GameOverMargin; //margin of error for when a game over will happen
 	public readonly float FixedTimeRatio = 0.02f; //whenever we change the time scale, we also change the physics time step to TimeScale * FixedTimeRatio. the default Unity physics step is 0.02 seconds
 	public float TimeSinceLastSpawn = 0.0f;
@@ -22,6 +24,7 @@ public class MySceneManager : MonoBehaviour {
 
 	void Start () {
 		manager = this;
+		SpawnDelay = Random.Range(PossibleSpawnRange.x, PossibleSpawnRange.y);
 	}
 	
 	// Update is called once per frame
@@ -29,8 +32,9 @@ public class MySceneManager : MonoBehaviour {
 		TimeSinceLastSpawn += Time.deltaTime;
 		Time.timeScale = TimeScale;
 		Time.fixedDeltaTime = TimeScale * FixedTimeRatio;
-		if (TimeSinceLastSpawn >= SpawnDelay) {
+		if (TimeScale > SafeZone && TimeSinceLastSpawn >= SpawnDelay * TimeScale) {
 			TimeSinceLastSpawn = 0.0f;
+			SpawnDelay = Random.Range(PossibleSpawnRange.x, PossibleSpawnRange.y);
 			Spawner sp = RandHelp.Choose(Spawns);
 			sp.Spawn();
 		}

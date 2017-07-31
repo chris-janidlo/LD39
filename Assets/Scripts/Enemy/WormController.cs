@@ -34,8 +34,9 @@ public class WormController : VirusController {
 		else {
 			cryTime += Time.deltaTime;
 			if (cryTime >= currCry) {
-				PlayerController.aus.PlayOneShot(RandHelp.Choose(Cries));
+				PlayerController.aus.PlayOneShot(RandHelp.Choose(Cries), 1.5f);
 				currCry = Random.Range(CryTimeRange.x, CryTimeRange.y);
+				cryTime = 0.0f;
 			}
 		}
 	}

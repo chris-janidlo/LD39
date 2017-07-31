@@ -61,7 +61,7 @@ public class VirusController : MonoBehaviour {
 	public void Damage (int damage) {
 		Health -= damage;
 		if (Health <= 0) {
-			PlayerController.aus.PlayOneShot(DeathSound, 3.0f);
+			PlayerController.aus.PlayOneShot(DeathSound, .7f);
 			MySceneManager.manager.IncreaseTime(SpeedDamage);
 			Destroy(gameObject);
 		}

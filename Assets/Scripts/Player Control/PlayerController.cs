@@ -33,16 +33,18 @@ public class PlayerController : MonoBehaviour {
 		aus = GetComponent<AudioSource>();
 		paraus = Location.GetComponent<AudioSource>();
 		jumpCount = 0;
+		paraus.volume = 0.0f;
+		paraus.Play();
 	}
 	
 	void Update () {
-		paraus.volume = 1 - (Time.timeScale);
+		paraus.volume = .05f * Mathf.Pow(2.0f, 2.6f * (1.0f - Time.timeScale)) - .12f;
 		if (jumpTime > 0)
 			jumpTime -= Time.deltaTime;
 
 		if (isGrounded()) {
 			if (!knownGrounded) {
-				aus.PlayOneShot(Landing);
+				aus.PlayOneShot(Landing, .7f);
 				knownGrounded = true;
 			}
 			jumpCount = 0;
@@ -66,7 +68,7 @@ public class PlayerController : MonoBehaviour {
 			if (rb.velocity.y > 0)
 				moveDir.y += rb.velocity.y;
 			jumpCount++;
-			aus.PlayOneShot(RandHelp.Choose(Jumping), .7f);
+			aus.PlayOneShot(RandHelp.Choose(Jumping), .4f);
 		}
 		else
 			moveDir.y = rb.velocity.y;
@@ -83,5 +85,9 @@ public class PlayerController : MonoBehaviour {
 			return false;
 		int layerMask = ~(1 << 8);
 		return Physics.Raycast(transform.position, Vector3.down, HalfHeight + GroundedMargin, layerMask);
+	}
+
+	void OnDestroy() {
+		paraus.Stop();	
 	}
 }

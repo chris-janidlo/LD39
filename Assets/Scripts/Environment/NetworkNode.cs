@@ -41,6 +41,7 @@ public class NetworkNode : MonoBehaviour {
 					PlayerController.aus.PlayOneShot(AliveAgainSound);
 					rend.material = HealthyMat;
 					Dead = false;
+					knownDead = false;
 					MySceneManager.manager.IncreaseTime(TimeHealth);
 				}
 			}
@@ -48,7 +49,7 @@ public class NetworkNode : MonoBehaviour {
 		if (Health <= 0)
 			Dead = true;
 		if (Dead && !knownDead) {
-			PlayerController.aus.PlayOneShot(DeathSound);
+			PlayerController.aus.PlayOneShot(DeathSound, .4f * Mathf.Pow(2.0f, 2.6f * (1.0f - Time.timeScale)) + 1.6f);
 			rend.material = DeadMat;
 			MySceneManager.manager.DecreaseTime(TimeHealth);
 			knownDead = true;
