@@ -25,15 +25,18 @@ public class PlayerController : MonoBehaviour {
 	private Vector2 prevHorizontalSpeed;
 	private Vector3 moveDir;
 	private bool knownGrounded;
+	private AudioSource paraus;
 
 	void Start () {
 		Location = transform.parent;
 		rb = transform.parent.GetComponent<Rigidbody>();
 		aus = GetComponent<AudioSource>();
+		paraus = Location.GetComponent<AudioSource>();
 		jumpCount = 0;
 	}
 	
 	void Update () {
+		paraus.volume = 1 - (Time.timeScale);
 		if (jumpTime > 0)
 			jumpTime -= Time.deltaTime;
 
