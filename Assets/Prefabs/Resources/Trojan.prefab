@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23823278765565042}
   - component: {fileID: 114662814420839860}
   - component: {fileID: 54546061125300330}
+  - component: {fileID: 82395297425540204}
   m_Layer: 0
   m_Name: Trojan
   m_TagString: Enemy
@@ -110,6 +111,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82395297425540204
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352977751526302}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114662814420839860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,6 +211,7 @@ MonoBehaviour:
   RotationAngle: 0
   RotationAxes: []
   RotationTimes: []
+  DeathSound: {fileID: 8300000, guid: 09532d4e8af408a428b166858c392d03, type: 3}
   ExplodeTime: 5
   MaxExplodeDistance: 5
   PayloadNames:
@@ -144,3 +226,8 @@ MonoBehaviour:
   - Virus
   - Virus
   Payload: []
+  ExplodeSounds:
+  - {fileID: 8300000, guid: 240dd04f134bb5b45a9da89559257622, type: 3}
+  - {fileID: 8300000, guid: a6476032deace284ba2c509e13167690, type: 3}
+  - {fileID: 8300000, guid: 5cb409cfb7279604580c9429dbd461f5, type: 3}
+  - {fileID: 8300000, guid: 51a016069e257714ba21e8584189c651, type: 3}

@@ -15,15 +15,21 @@ public class PlayerController : MonoBehaviour {
 	public float GroundedMargin = 0.1f; //margin of error for ground check
 	public float JumpDelay = 0.1f; //how long to wait after jumping before being grounded resets jumpCount (needed because game thinks you are still grounded a frame or two after jumping)
 
+	public AudioClip Landing;
+	public AudioClip[] Jumping;
+	public static AudioSource aus;
+
 	private Rigidbody rb; //rigidbody of parent, which just translates; no rotation
 	private int jumpCount;
 	private float jumpTime;
 	private Vector2 prevHorizontalSpeed;
 	private Vector3 moveDir;
+	private bool knownGrounded;
 
 	void Start () {
 		Location = transform.parent;
 		rb = transform.parent.GetComponent<Rigidbody>();
+		aus = GetComponent<AudioSource>();
 		jumpCount = 0;
 	}
 	
@@ -32,12 +38,17 @@ public class PlayerController : MonoBehaviour {
 			jumpTime -= Time.deltaTime;
 
 		if (isGrounded()) {
+			if (!knownGrounded) {
+				aus.PlayOneShot(Landing);
+				knownGrounded = true;
+			}
 			jumpCount = 0;
 			moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 			moveDir = transform.TransformDirection(moveDir).normalized;
 			moveDir *= Speed;
 		}
 		else {
+			knownGrounded = false;
 			moveDir *= DragNum;
 			Vector3 strafeDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 			strafeDirection = transform.TransformDirection(strafeDirection).normalized;
@@ -49,7 +60,10 @@ public class PlayerController : MonoBehaviour {
 			if (jumpCount == 0)
 				jumpTime = JumpDelay;
 			moveDir.y = JumpBursts[jumpCount];
+			if (rb.velocity.y > 0)
+				moveDir.y += rb.velocity.y;
 			jumpCount++;
+			aus.PlayOneShot(RandHelp.Choose(Jumping), .7f);
 		}
 		else
 			moveDir.y = rb.velocity.y;

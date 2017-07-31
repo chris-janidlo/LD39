@@ -14,6 +14,8 @@ public class NetworkNode : MonoBehaviour {
 	public bool Dead = false;
 	public Material HealthyMat;
 	public Material DeadMat;
+	public AudioClip DeathSound;
+	public AudioClip AliveAgainSound;
 
 	private bool knownDead = false;
 	private float timeSinceLastRepairAction; //time since either the node was attacked or the node repaired itself
@@ -36,6 +38,7 @@ public class NetworkNode : MonoBehaviour {
 			else {
 				Health = MaxHealth;
 				if (Dead) {
+					PlayerController.aus.PlayOneShot(AliveAgainSound);
 					rend.material = HealthyMat;
 					Dead = false;
 					MySceneManager.manager.IncreaseTime(TimeHealth);
@@ -45,6 +48,7 @@ public class NetworkNode : MonoBehaviour {
 		if (Health <= 0)
 			Dead = true;
 		if (Dead && !knownDead) {
+			PlayerController.aus.PlayOneShot(DeathSound);
 			rend.material = DeadMat;
 			MySceneManager.manager.DecreaseTime(TimeHealth);
 			knownDead = true;

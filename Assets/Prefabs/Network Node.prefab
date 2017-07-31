@@ -140,7 +140,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 170af9ced61014b4eb91d6912ac5f634, type: 2}
+  - {fileID: 2100000, guid: a6a4e1848174311458b01abdb85bb6ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -337,6 +337,8 @@ MonoBehaviour:
   Dead: 0
   HealthyMat: {fileID: 2100000, guid: 170af9ced61014b4eb91d6912ac5f634, type: 2}
   DeadMat: {fileID: 2100000, guid: 172415c75f7afa143aaa3d28dcb6d52e, type: 2}
+  DeathSound: {fileID: 8300000, guid: d8bf49002b8374b49b1054ac847867e9, type: 3}
+  AliveAgainSound: {fileID: 8300000, guid: 52ace5ca3472a4f46a485999b0b92a13, type: 3}
 --- !u!222 &222343298482614920
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -405,7 +407,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.2}
-  m_SizeDelta: {x: 32, y: 32}
+  m_SizeDelta: {x: 3, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224514622217410852
 RectTransform:

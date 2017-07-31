@@ -8,6 +8,7 @@ public class TrojanController : VirusController {
 	public float MaxExplodeDistance; //how far away the payload could potentially be
 	public string[] PayloadNames; //edit this to edit the payload
 	public VirusController[] Payload; //how many, and what kind, of virus are released
+	public AudioClip[] ExplodeSounds;
 
 	private Rigidbody rb;
 	private float life = 0.0f;
@@ -46,6 +47,7 @@ public class TrojanController : VirusController {
 	}
 
 	void Explode () {
+		PlayerController.aus.PlayOneShot(RandHelp.Choose(ExplodeSounds));
 		MySceneManager.manager.IncreaseTime(SpeedDamage);
 		foreach (VirusController virus in Payload)
 			Instantiate(virus).Initialize(transform.position + Random.insideUnitSphere * MaxExplodeDistance);

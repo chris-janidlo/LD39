@@ -13,6 +13,7 @@ public class VirusController : MonoBehaviour {
 	public float RotationAngle = 5.0f;
 	public Vector3[] RotationAxes; //possible axes that this virus can rotate around
 	public float[] RotationTimes; //potential times between choosing an axis
+	public AudioClip DeathSound;
 
 	private NetworkNode target;
 	private float timeSinceLastAttack = 0.0f;
@@ -60,6 +61,7 @@ public class VirusController : MonoBehaviour {
 	public void Damage (int damage) {
 		Health -= damage;
 		if (Health <= 0) {
+			PlayerController.aus.PlayOneShot(DeathSound, 3.0f);
 			MySceneManager.manager.IncreaseTime(SpeedDamage);
 			Destroy(gameObject);
 		}

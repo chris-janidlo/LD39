@@ -7,8 +7,10 @@ public class BulletController : MonoBehaviour {
 
 	public float Speed = 50.0f;
 	public int Damage = 1;
+	public AudioClip DeathSound;
 
 	private Rigidbody rb;
+	private AudioSource aus;
 
 	void Start () {
 		
@@ -24,9 +26,9 @@ public class BulletController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		Debug.Log(collision.gameObject.tag);
 		if (collision.gameObject.tag == "Enemy")
 			collision.gameObject.GetComponentInChildren<VirusController>().Damage(Damage);
+		PlayerController.aus.PlayOneShot(DeathSound);
 		Destroy(gameObject);
 	}
 }
